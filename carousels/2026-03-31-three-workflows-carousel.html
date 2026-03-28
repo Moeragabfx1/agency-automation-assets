@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Carousel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #0F172A;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-color: #3B82F6;
+            --slide-width: 1080px;
+            --slide-height: 1350px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .carousel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .slide {
+            width: var(--slide-width);
+            height: var(--slide-height);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* Decorative Elements */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 60px;
+            left: 100px;
+            right: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            padding-top: 30px;
+            color: var(--text-secondary);
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .handle {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 84px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .accent-text {
+            color: var(--accent-color);
+        }
+
+        .number-badge {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        h2 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 42px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: 850px;
+        }
+
+        /* Cover Specific */
+        .slide-cover h1 {
+            font-size: 100px;
+            max-width: 900px;
+        }
+
+        .slide-cover .decorative-line {
+            width: 120px;
+            height: 12px;
+            background: var(--accent-color);
+            margin-bottom: 40px;
+        }
+
+        /* CTA Specific */
+        .cta-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid var(--accent-color);
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 20px;
+            font-size: 72px;
+        }
+
+        .keyword {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 8px;
+        }
+
+        @page {
+            size: 1080px 1350px;
+            margin: 0;
+        }
+
+        @media print {
+            html, body {
+                width: 1080px;
+                margin: 0;
+                padding: 0;
+                background: none;
+            }
+            .carousel-container {
+                display: block;
+                padding: 0;
+                margin: 0;
+                gap: 0;
+            }
+            .slide {
+                width: 1080px;
+                height: 1350px;
+                margin: 0;
+                page-break-after: always;
+                break-after: page;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .slide:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <!-- Slide 1: Cover -->
+        <section class="slide slide-cover">
+            <div class="slide-content">
+                <div class="decorative-line"></div>
+                <h1>3 Workflows I'd <span class="accent-text">Automate First</span> in a Founder-Led Agency</h1>
+            </div>
+            <div class="footer">
+                <span>Scaling Operations</span>
+                <span class="handle">@moeragabesl</span>
+            </div>
+        </section>
+
+        <!-- Slide 2: Body 1 -->
+        <section class="slide">
+            <div class="slide-content">
+                <span class="number-badge">01 / Lead Intake</span>
+                <h2>Lead Follow-up</h2>
+                <p>If new leads wait too long, revenue leaks before sales even starts. Speed to lead is the highest ROI automation you can build.</p>
+            </div>
+            <div class="footer">
+                <span>Workflow Automation</span>
+                <span class="handle">@moeragabesl</span>
+            </div>
+        </section>
+
+        <!-- Slide 3: Body 2 -->
+        <section class="slide">
+            <div class="slide-content">
+                <span class="number-badge">02 / Operations</span>
+                <h2>Reporting & Admin</h2>
+                <p>Manual reporting steals hours every week and keeps founders stuck in delivery noise. Automate the data so you can focus on the strategy.</p>
+            </div>
+            <div class="footer">
+                <span>Founder Freedom</span>
+                <span class="handle">@moeragabesl</span>
+            </div>
+        </section>
+
+        <!-- Slide 4: Body 3 -->
+        <section class="slide">
+            <div class="slide-content">
+                <span class="number-badge">03 / Delivery</span>
+                <h2>Task Handoff</h2>
+                <p>If work moves between people without a system, things slip and clients feel the mess. A standardized handoff ensures quality at scale.</p>
+            </div>
+            <div class="footer">
+                <span>Systematic Growth</span>
+                <span class="handle">@moeragabesl</span>
+            </div>
+        </section>
+
+        <!-- Slide 5: CTA -->
+        <section class="slide">
+            <div class="slide-content">
+                <div class="cta-box">
+                    <h2>Ready to scale?</h2>
+                    <p>Comment <span class="keyword">SYSTEM</span> and I'll send you the full technical breakdown of these workflows.</p>
+                </div>
+            </div>
+            <div class="footer">
+                <span>Get the Breakdown</span>
+                <span class="handle">@moeragabesl</span>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
